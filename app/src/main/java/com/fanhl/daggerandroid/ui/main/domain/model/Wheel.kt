@@ -1,4 +1,4 @@
-package com.fanhl.daggerandroid.domain.model
+package com.fanhl.daggerandroid.ui.main.domain.model
 
 import javax.inject.Inject
 

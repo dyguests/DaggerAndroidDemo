@@ -1,7 +1,7 @@
 package com.fanhl.daggerandroid.ui.main.di
 
-import com.fanhl.daggerandroid.domain.model.Car
-import com.fanhl.daggerandroid.domain.model.Wheel
+import com.fanhl.daggerandroid.ui.main.domain.model.Car
+import com.fanhl.daggerandroid.ui.main.domain.model.Wheel
 import dagger.Module
 import dagger.Provides
 
