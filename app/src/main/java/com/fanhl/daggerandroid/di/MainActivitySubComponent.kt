@@ -1,12 +1,10 @@
 package com.fanhl.daggerandroid.di
 
+import com.fanhl.daggerandroid.App
 import com.fanhl.daggerandroid.MainActivity
-import com.fanhl.daggerandroid.domain.model.Car
-import com.fanhl.daggerandroid.domain.model.Wheel
 import dagger.Binds
 import dagger.Component
 import dagger.Module
-import dagger.Provides
 import dagger.Subcomponent
 import dagger.android.AndroidInjector
 import dagger.multibindings.ClassKey
@@ -17,27 +15,21 @@ import dagger.multibindings.IntoMap
         CarModule::class
     ]
 )
-interface MainActivityComponent : AndroidInjector<MainActivity> {
+interface MainActivitySubComponent : AndroidInjector<MainActivity> {
     @Subcomponent.Builder
     abstract class Builder : AndroidInjector.Builder<MainActivity>()
 }
 
-@Module
-internal class CarModule {
-    @Provides
-    fun provideCar(wheel: Wheel) = Car(wheel)
-}
-
 @Module(
     subcomponents = [
-        MainActivityComponent::class
+        MainActivitySubComponent::class
     ]
 )
 abstract class MainActivityModule {
     @Binds
     @IntoMap
     @ClassKey(MainActivity::class)
-    abstract fun bindYourActivityInjectorFactory(builder: MainActivityComponent.Builder): AndroidInjector.Factory<*>
+    abstract fun bindMainActivityInjectorFactory(builder: MainActivitySubComponent.Builder): AndroidInjector.Factory<*>
 }
 
 @Component(
@@ -45,4 +37,6 @@ abstract class MainActivityModule {
         MainActivityModule::class
     ]
 )
-interface AppComponent
+interface AppComponent {
+//    fun inject(app: App)
+}
