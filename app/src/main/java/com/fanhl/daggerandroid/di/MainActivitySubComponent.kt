@@ -6,6 +6,7 @@ import dagger.Binds
 import dagger.Component
 import dagger.Module
 import dagger.Subcomponent
+import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
 import dagger.multibindings.ClassKey
 import dagger.multibindings.IntoMap
@@ -34,9 +35,8 @@ abstract class MainActivityModule {
 
 @Component(
     modules = [
+        AndroidInjectionModule::class,
         MainActivityModule::class
     ]
 )
-interface AppComponent {
-//    fun inject(app: App)
-}
+interface AppComponent : AndroidInjector<App>
