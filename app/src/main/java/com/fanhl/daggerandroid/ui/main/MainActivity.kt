@@ -1,7 +1,8 @@
-package com.fanhl.daggerandroid
+package com.fanhl.daggerandroid.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.fanhl.daggerandroid.R
 import com.fanhl.daggerandroid.domain.model.Car
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_main.*

@@ -1,4 +1,4 @@
-package com.fanhl.daggerandroid.di
+package com.fanhl.daggerandroid.ui.main.di
 
 import com.fanhl.daggerandroid.domain.model.Car
 import com.fanhl.daggerandroid.domain.model.Wheel
