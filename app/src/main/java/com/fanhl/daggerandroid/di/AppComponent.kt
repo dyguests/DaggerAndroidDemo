@@ -1,18 +1,21 @@
 package com.fanhl.daggerandroid.di
 
 import com.fanhl.daggerandroid.MainActivity
-import dagger.Component
+import com.fanhl.daggerandroid.domain.model.Car
+import com.fanhl.daggerandroid.domain.model.Wheel
 import dagger.Module
 import dagger.Provides
-import javax.inject.Inject
+import dagger.Subcomponent
+import dagger.android.AndroidInjector
 
-@Component(
+@Subcomponent(
     modules = [
         AppModule::class
     ]
 )
-interface AppComponent {
-    fun inject(mainActivity: MainActivity)
+interface AppComponent : AndroidInjector<MainActivity> {
+    @Subcomponent.Builder
+    abstract class Builder : AndroidInjector.Builder<MainActivity>()
 }
 
 @Module
@@ -21,8 +24,3 @@ internal class AppModule {
     fun provideCar(wheel: Wheel) = Car(wheel)
 }
 
-class Car(val wheel: Wheel)
-
-class Wheel @Inject constructor() {
-    fun type() = "宝马的轮胎"
-}
